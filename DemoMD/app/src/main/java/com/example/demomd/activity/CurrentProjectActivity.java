@@ -19,10 +19,8 @@ public class CurrentProjectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_project);
 
+        //Custom list project
         ListView listView = (ListView) findViewById(R.id.listProjects);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,items);
-//        listView.setAdapter(adapter);
-
         CustomListProjectView customListProjectView = new CustomListProjectView(this, items);
         listView.setAdapter(customListProjectView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -32,12 +30,5 @@ public class CurrentProjectActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
-
-//    @Override
-//    public void finish() {
-//        super.finish();
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//    }
 }

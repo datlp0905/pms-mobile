@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InputEffort2Activity"></activity>
         <activity android:name=".activity.ProjectDetailActivity" />
         <activity android:name=".activity.CurrentProjectActivity" />
         <activity android:name=".activity.MainActivity">

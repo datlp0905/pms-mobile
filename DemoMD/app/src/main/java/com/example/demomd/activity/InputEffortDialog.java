@@ -37,6 +37,8 @@ public class InputEffortDialog extends AppCompatDialogFragment implements DatePi
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        //Create Dialog input Effort
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.custom_input_effort, null);
@@ -86,7 +88,6 @@ public class InputEffortDialog extends AppCompatDialogFragment implements DatePi
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 

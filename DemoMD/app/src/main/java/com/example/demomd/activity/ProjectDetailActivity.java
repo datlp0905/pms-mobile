@@ -12,7 +12,6 @@ import com.example.demomd.R;
 import com.example.demomd.activity.custom.CustomProjectMemberView;
 
 public class ProjectDetailActivity extends AppCompatActivity {
-    //    Dialog dlInputEffort;
     private String selectSpinner;
     private Button btnDeclareEffort;
 
@@ -26,8 +25,6 @@ public class ProjectDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_detail);
 
-//        dlInputEffort = new Dialog(ProjectDetailActivity.this);
-
         //Custom list project member
         TextView txtNameProject = findViewById(R.id.txtNameProject);
         txtNameProject.setText("Project Name");
@@ -35,7 +32,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
         CustomProjectMemberView customProjectMemberView = new CustomProjectMemberView(this, projectMemberName, roleInProject, img);
         listView.setAdapter(customProjectMemberView);
 
-        //openDiablog
+        //open Diablog InputEffort
         btnDeclareEffort = (Button) findViewById(R.id.btnDeclareEffort);
         btnDeclareEffort.setOnClickListener(new View.OnClickListener() {
             @Override
