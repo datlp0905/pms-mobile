@@ -8,15 +8,17 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.demomd.R;
+import com.example.demomd.data.ProjectResponse;
 
-public class CustomListProjectView extends ArrayAdapter<String> {
+import java.util.List;
 
-    private String[] items;
+public class CustomListProjectView extends ArrayAdapter<ProjectResponse> {
+
+    private List<ProjectResponse> items;
     private Activity context;
 
-    public CustomListProjectView(Activity context, String[] items) {
+    public CustomListProjectView(Activity context, List<ProjectResponse> items) {
         super(context, R.layout.custom_project_name, items);
-
         this.context = context;
         this.items = items;
     }
@@ -32,7 +34,7 @@ public class CustomListProjectView extends ArrayAdapter<String> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.projectName.setText(items[position]);
+        viewHolder.projectName.setText(items.get(position).getName());
         return convertView;
     }
 

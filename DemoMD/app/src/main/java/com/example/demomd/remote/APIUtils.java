@@ -6,7 +6,7 @@ public class APIUtils {
 
     private APIUtils(){}
 
-    public static final String BASE_URL = "http://172.20.10.3:8080/api/";
+    public static final String BASE_URL = "http://192.168.0.4:8080/api/";
 
     public static ProjectService getProjectService() {
         return RetrofitClient.getClient(BASE_URL).create(ProjectService.class);

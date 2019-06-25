@@ -6,24 +6,34 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.demomd.R;
 import com.example.demomd.activity.custom.CustomListProjectView;
+import com.example.demomd.data.ProjectResponse;
+import com.example.demomd.presenter.ShowListProjectPresenter;
+import com.example.demomd.presenter.ShowListProjectPresenterImpl;
+import com.example.demomd.view.ShowListProjectView;
 
-public class CurrentProjectActivity extends AppCompatActivity {
+import java.util.List;
 
-    String[] items = {"User Managerments", "Binary Search Tree", "Linked List", "Portfolio Management System", "Book Ticket"};
+public class CurrentProjectActivity extends AppCompatActivity implements ShowListProjectView {
+
+    ListView listView;
+    private ShowListProjectPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_project);
+        listView = (ListView) findViewById(R.id.listProjects);
+        presenter = new ShowListProjectPresenterImpl(this);
+        presenter.requestDataFromServer();
+    }
 
-        ListView listView = (ListView) findViewById(R.id.listProjects);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,items);
-//        listView.setAdapter(adapter);
-
-        CustomListProjectView customListProjectView = new CustomListProjectView(this, items);
+    @Override
+    public void setListProjectToView(List<ProjectResponse> responses) {
+        CustomListProjectView customListProjectView = new CustomListProjectView(this, responses);
         listView.setAdapter(customListProjectView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -32,12 +42,10 @@ public class CurrentProjectActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
-//    @Override
-//    public void finish() {
-//        super.finish();
-//        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-//    }
+    @Override
+    public void onResponseFailure(Throwable throwable) {
+        Toast.makeText(this, throwable.getMessage(), Toast.LENGTH_LONG).show();
+    }
 }
