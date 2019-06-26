@@ -23,8 +23,8 @@ public class ShowListProjectPresenterImpl implements ShowListProjectPresenter, S
     }
 
     @Override
-    public void requestDataFromServer() {
-        model.getAllCurrentProject(this);
+    public void getListProjectByEmployeeId(String employeeId) {
+        model.getAllCurrentProject(this, employeeId);
     }
 
     @Override

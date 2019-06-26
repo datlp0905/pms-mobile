@@ -11,5 +11,5 @@ public interface ShowListProjectModel {
         void onFailure(Throwable throwable);
     }
 
-    void getAllCurrentProject(OnFinishListener finishListener);
+    void getAllCurrentProject(OnFinishListener finishListener, String employeeId);
 }

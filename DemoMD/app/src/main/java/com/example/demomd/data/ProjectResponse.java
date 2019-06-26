@@ -3,7 +3,10 @@ package com.example.demomd.data;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ProjectResponse {
+import java.io.Serializable;
+import java.util.Date;
+
+public class ProjectResponse implements Serializable {
     @SerializedName("id")
     @Expose
     protected int id;
@@ -12,21 +15,23 @@ public class ProjectResponse {
     @Expose
     private String name;
 
+    @SerializedName("startDate")
+    @Expose
+    private Date startDate;
+
+    @SerializedName("endDate")
+    @Expose
+    private Date endDate;
+
     @SerializedName("description")
     @Expose
     private String description;
 
-    @SerializedName("statusID")
+    @SerializedName("status")
     @Expose
-    private int statusID;
+    private ProjectStatusResponse status;
 
     public ProjectResponse() {
-    }
-
-    public ProjectResponse(int id, String name, String description) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
     }
 
     public int getId() {
@@ -53,12 +58,28 @@ public class ProjectResponse {
         this.description = description;
     }
 
-    public int getStatusID() {
-        return statusID;
+    public ProjectStatusResponse getStatus() {
+        return status;
     }
 
-    public void setStatusID(int statusID) {
-        this.statusID = statusID;
+    public void setStatus(ProjectStatusResponse status) {
+        this.status = status;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     @Override

@@ -6,9 +6,10 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
-public interface ProjectService {
+public interface ProjectMemberService {
 
-    @GET("projects/without-paging")
-    Call<List<ProjectResponse>> getAllProject();
+    @GET("project-members")
+    Call<List<ProjectResponse>> getAllProjectByEmployeeId(@Query("employeeID") String employeeId);
 }

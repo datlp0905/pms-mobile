@@ -24,7 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class InputEffortDialog extends AppCompatDialogFragment implements DatePickerDialog.OnDateSetListener {
@@ -73,6 +75,7 @@ public class InputEffortDialog extends AppCompatDialogFragment implements DatePi
         //Create Spinner
         spRoleIE = view.findViewById(R.id.spRoleIE);
         List<String> roles = new ArrayList<>();
+        //Map<Integer,String> map = new HashMap<>();
         roles.add("Developer");
         roles.add("Project Manager");
         roles.add("Busniess Manner");

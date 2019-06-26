@@ -78,11 +78,11 @@
             app:boxStrokeColor="@color/lightblue">
 
             <EditText
+                android:id="@+id/edtStartDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:editable="false"
-                android:hint="Start Date: "
-                android:text="10/3/2019" />
+                android:hint="Start Date: " />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -95,11 +95,11 @@
             app:boxStrokeColor="@color/lightblue">
 
             <EditText
+                android:id="@+id/edtEndDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:editable="false"
                 android:hint="End Date: "
-                android:text="10/3/2019"
                 android:textColorHint="@android:color/darker_gray" />
 
         </android.support.design.widget.TextInputLayout>
@@ -112,11 +112,11 @@
             app:boxStrokeColor="@color/lightblue">
 
             <EditText
+                android:id="@+id/edtStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:editable="false"
                 android:hint="Status "
-                android:text="In Process"
                 android:textColor="@color/green" />
 
         </android.support.design.widget.TextInputLayout>
@@ -161,7 +161,7 @@
             android:layout_weight="1"
             android:background="@color/lightblue"
             android:elevation="@dimen/cardview_compat_inset_shadow"
-            android:text="View Summary Effort"
+            android:text="Summary Effort"
             android:textColor="@color/white" />
     </LinearLayout>
 

@@ -28,17 +28,19 @@ public class CurrentProjectActivity extends AppCompatActivity implements ShowLis
         setContentView(R.layout.activity_current_project);
         listView = (ListView) findViewById(R.id.listProjects);
         presenter = new ShowListProjectPresenterImpl(this);
-        presenter.requestDataFromServer();
+        presenter.getListProjectByEmployeeId("ADMIN");
     }
 
     @Override
-    public void setListProjectToView(List<ProjectResponse> responses) {
+    public void setListProjectToView(final List<ProjectResponse> responses) {
         CustomListProjectView customListProjectView = new CustomListProjectView(this, responses);
         listView.setAdapter(customListProjectView);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(CurrentProjectActivity.this, ProjectDetailActivity.class);
+                ProjectResponse projectResponse = responses.get(position);
+                intent.putExtra("projectDetail", projectResponse);
                 startActivity(intent);
             }
         });
