@@ -18,7 +18,7 @@ public class ShowListProjectPresenterImpl implements ShowListProjectPresenter, S
     }
 
     @Override
-    public void onDeploy() {
+    public void onDestroy() {
         view = null;
     }
 

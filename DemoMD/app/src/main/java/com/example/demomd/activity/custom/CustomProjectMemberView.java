@@ -9,20 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.demomd.R;
+import com.example.demomd.data.MemberInProjectResponse;
+import com.example.demomd.data.PositionResponse;
 
-public class CustomProjectMemberView extends ArrayAdapter<String> {
+import java.util.List;
 
-    private String[] projectMemberName;
-    private String[] roleInProject;
+public class CustomProjectMemberView extends ArrayAdapter<MemberInProjectResponse> {
+
+    private List<MemberInProjectResponse> listEmployeeInProject;
     private Integer[] img;
     private Activity context;
 
-    public CustomProjectMemberView(Activity context, String[] projectMemberName, String[] roleInProject, Integer[] img) {
-        super(context, R.layout.custom_project_member, projectMemberName);
+    public CustomProjectMemberView(Activity context, List<MemberInProjectResponse> listEmployeeInProject, Integer[] img) {
+        super(context, R.layout.custom_project_member, listEmployeeInProject);
 
         this.context = context;
-        this.projectMemberName = projectMemberName;
-        this.roleInProject = roleInProject;
+        this.listEmployeeInProject = listEmployeeInProject;
         this.img = img;
     }
 
@@ -38,13 +40,23 @@ public class CustomProjectMemberView extends ArrayAdapter<String> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.projectMemberNameHolder.setText(projectMemberName[position]);
-        viewHolder.roleInProjectHolder.setText(roleInProject[position]);
+        viewHolder.projectMemberNameHolder.setText(listEmployeeInProject.get(position).getEmployee().getFullname());
+        viewHolder.roleInProjectHolder.setText(convertListPositionToString(listEmployeeInProject.get(position).getPositionInProjectList()));
         viewHolder.imgHolder.setImageResource(img[position]);
 
         return convertView;
+    }
 
+    private String convertListPositionToString(final List<PositionResponse> listPosition) {
+        String listPositionName = "";
+        if(listPosition != null && !listPosition.isEmpty()) {
+            for(PositionResponse response : listPosition) {
+                listPositionName += response.getName() + ", ";
+            }
+            listPositionName = listPositionName.substring(0, listPositionName.lastIndexOf(","));
+        }
 
+        return listPositionName;
     }
 
     class ViewHolder {
