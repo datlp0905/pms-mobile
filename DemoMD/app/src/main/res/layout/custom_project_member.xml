@@ -10,14 +10,16 @@
 
         <ImageView
             android:id="@+id/imageEmployee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_person_black_50dp" />
+            android:src="@drawable/ic_person_black_25dp" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="8"
             android:orientation="vertical">
 
             <TextView
@@ -26,7 +28,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Project Name"
-                android:textAppearance="?android:textAppearanceLarge" />
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/txtProjectRole"
@@ -34,10 +37,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Project Role"
-                android:textAppearance="?android:textAppearanceSmall" />
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_chevron_right_black_24dp" />
     </LinearLayout>
 
 

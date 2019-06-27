@@ -19,4 +19,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, CurrentProjectActivity.class);
         startActivity(intent);
     }
+
+    public void clickToViewEffortStatus(View view) {
+        Intent intent = new Intent(this, ViewEffortHistoryActivity.class);
+        startActivity(intent);
+    }
 }

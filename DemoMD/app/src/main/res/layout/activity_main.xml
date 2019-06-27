@@ -24,10 +24,10 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:src="@drawable/ic_home_white_24dp" />
 
                 <TextView
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="8"
                     android:gravity="center"
                     android:text="Dashboard"
                     android:textColor="@color/white"
@@ -43,11 +43,11 @@
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:layout_marginRight="15dp"
-                    android:layout_weight="0"
+                    android:layout_weight="1"
                     android:src="@drawable/ic_account_circle_white_24dp" />
 
 
@@ -58,7 +58,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:clipToPadding="false"
         android:gravity="center"
         android:orientation="vertical">
@@ -150,6 +149,52 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="Approve effort for employee"
+                    android:textColor="@android:color/darker_gray" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:foreground="?android:attr/selectableItemBackground">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:onClick="clickToViewEffortStatus"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/cerclebackgroundlightblue"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_build_white_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Effort Status"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_margin="10dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:text="View Effort Status"
                     android:textColor="@android:color/darker_gray" />
 
             </LinearLayout>

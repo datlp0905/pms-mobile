@@ -32,7 +32,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements ProjectD
     private ProjectDetailPresenter presenter;
 
     public int projectMemberId;
-    Integer[] img = {R.drawable.ic_person_black_50dp, R.drawable.ic_person_black_50dp, R.drawable.ic_person_black_50dp, R.drawable.ic_person_black_50dp, R.drawable.ic_person_black_50dp};
+    Integer[] img = {R.drawable.ic_person_black_25dp, R.drawable.ic_person_black_25dp, R.drawable.ic_person_black_25dp, R.drawable.ic_person_black_25dp, R.drawable.ic_person_black_25dp};
 
 
     @Override

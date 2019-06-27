@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.CurrentProjectActivity">
+    tools:context=".activity.ViewEffortHistoryActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="8"
                     android:gravity="center"
-                    android:text="Current Project"
+                    android:text="Effort Status"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     android:textStyle="bold" />
@@ -48,18 +48,15 @@
                     android:layout_marginRight="15dp"
                     android:layout_weight="1"
                     android:src="@drawable/ic_account_circle_white_24dp" />
-
-
             </LinearLayout>
         </android.support.v7.widget.Toolbar>
-
-        <ListView
-            android:id="@+id/listProjects"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"></ListView>
-
     </android.support.design.widget.AppBarLayout>
 
+    <ListView
+        android:id="@+id/listEffortStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:dividerHeight="10.0sp"></ListView>
 
-</RelativeLayout>
+</LinearLayout>
