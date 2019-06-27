@@ -3,7 +3,6 @@
     android:layout_width="350dp"
     android:layout_height="500dp"
     android:layout_gravity="center"
-    android:background="@drawable/cerclebackground"
     android:orientation="vertical">
 
 
@@ -12,7 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:orientation="vertical">
-
+        <Button
+            android:id="@+id/btnInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Input"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -169,6 +172,7 @@
         android:layout_margin="10dp">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/edtComment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
@@ -180,5 +184,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:orientation="horizontal"></LinearLayout>
+        android:orientation="horizontal">
+    </LinearLayout>
 </LinearLayout>

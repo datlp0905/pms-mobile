@@ -27,12 +27,11 @@ public class ProjectDetailActivity extends AppCompatActivity implements ProjectD
     private Button btnDeclareEffort;
     private ProjectResponse projectDetail;
     private EditText edtStartDate, edtEndDate, edtStatus;
-    TextView txtProjectName;
+    private TextView txtProjectName;
     private ListView listView;
     private ProjectDetailPresenter presenter;
 
-    String[] projectMemberName = {"John Cenna", "Shauna Vayne", "Khadar Jhin ", "Anna", "Henry"};
-    String[] roleInProject = {"Project Manager", "Developer", "Developer", "Developer", "Developer"};
+    public int projectMemberId;
     Integer[] img = {R.drawable.ic_person_black_50dp, R.drawable.ic_person_black_50dp, R.drawable.ic_person_black_50dp, R.drawable.ic_person_black_50dp, R.drawable.ic_person_black_50dp};
 
 
@@ -65,6 +64,9 @@ public class ProjectDetailActivity extends AppCompatActivity implements ProjectD
 
     public void openDialogInputEffort() {
         InputEffortDialog inputEffortDialog = new InputEffortDialog();
+        Bundle bundle = new Bundle();
+        bundle.putInt("projectMemberId", projectMemberId);
+        inputEffortDialog.setArguments(bundle);
         inputEffortDialog.show(getSupportFragmentManager(), "input effort");
     }
 
@@ -83,6 +85,7 @@ public class ProjectDetailActivity extends AppCompatActivity implements ProjectD
     public void setProjectDetailToView(ProjectMemberResponse projectMemberResponse) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
+        projectMemberId = projectMemberResponse.getId();
         txtProjectName.setText(projectMemberResponse.getProject().getName());
         edtStartDate.setText(sdf.format(projectMemberResponse.getProject().getStartDate()));
         edtEndDate.setText(sdf.format(projectMemberResponse.getProject().getEndDate()));
