@@ -1,6 +1,7 @@
 package com.example.demomd.repository;
 
 import com.example.demomd.data.EffortRequest;
+import com.example.demomd.data.EffortResponse;
 import com.example.demomd.data.MemberInProjectResponse;
 import com.example.demomd.data.PositionResponse;
 import com.example.demomd.data.ProjectMemberResponse;
@@ -31,4 +32,7 @@ public interface PMSRepository {
 
     @POST("efforts")
     Call<EffortRequest> inputEffort(@Body EffortRequest effortRequest);
+
+    @GET("efforts/currentWeek")
+    Call<List<EffortResponse>> getAllEffortOfCurrentWeek(@Query("projectMemberId") int projectMemberId);
 }

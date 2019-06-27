@@ -3,7 +3,6 @@ package com.example.demomd.activity;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -26,7 +25,6 @@ import com.example.demomd.presenter.InputEffortPresenter;
 import com.example.demomd.presenter.InputEffortPresenterImpl;
 import com.example.demomd.view.InputEffortView;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -38,7 +36,7 @@ public class InputEffortDialog extends AppCompatDialogFragment implements DatePi
     private EditText edtCE, edtBE, edtAE, edtReportDate, edtComment;
     private Spinner spRoleIE;
     private PositionResponse selectedRole;
-    private Button btnPickDate, btnInput;
+    private Button btnPickDate, btnInput, btnCancel;
     private int projectMemberId;
     private InputEffortPresenter inputEffortPresenter;
 
@@ -61,6 +59,14 @@ public class InputEffortDialog extends AppCompatDialogFragment implements DatePi
         edtAE       = view.findViewById(R.id.edtActuralEffort);
         edtComment  = view.findViewById(R.id.edtComment);
         btnInput    = view.findViewById(R.id.btnInput);
+        btnCancel   = view.findViewById(R.id.btnCancel);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
 
         btnInput.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,19 +89,7 @@ public class InputEffortDialog extends AppCompatDialogFragment implements DatePi
         spRoleIE = view.findViewById(R.id.spRoleIE);
 
         builder.setView(view)
-                .setTitle("Input Effort")
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-
-                    }
-                });
+                .setTitle("Input Effort");
         //Pick Date
         edtReportDate = view.findViewById(R.id.edtReportDate);
         Date currentDate = new Date();
@@ -162,6 +156,7 @@ public class InputEffortDialog extends AppCompatDialogFragment implements DatePi
     public void inputEffort(EffortRequest effortRequest) {
         if(effortRequest != null) {
             Toast.makeText(getContext(), "Input effort success", Toast.LENGTH_LONG).show();
+            dismiss();
         }
     }
 

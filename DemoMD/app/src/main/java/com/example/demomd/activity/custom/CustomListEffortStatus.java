@@ -1,6 +1,7 @@
 package com.example.demomd.activity.custom;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,25 +9,21 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.demomd.R;
+import com.example.demomd.data.EffortResponse;
 
-public class CustomListEffortStatus extends ArrayAdapter<String> {
+import java.text.SimpleDateFormat;
+import java.util.List;
 
-    private String[] date;
-    private Float[] calendarEffort;
-    private Float[] acturalEffort;
-    private Float[] buiableEffort;
+public class CustomListEffortStatus extends ArrayAdapter<EffortResponse> {
+
+    private List<EffortResponse> listEffort;
     private Activity context;
 
-    public CustomListEffortStatus(Activity context, String[] date, Float[] calendarEffort, Float[] acturalEffort, Float[] buiableEffort) {
-        super(context, R.layout.custom_project_member, date);
-
+    public CustomListEffortStatus(Activity context, List<EffortResponse> listEffort) {
+        super(context, R.layout.custom_project_member, listEffort);
         this.context = context;
-        this.date = date;
-        this.calendarEffort = calendarEffort;
-        this.acturalEffort = acturalEffort;
-        this.buiableEffort = buiableEffort;
+        this.listEffort = listEffort;
     }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -39,12 +36,25 @@ public class CustomListEffortStatus extends ArrayAdapter<String> {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
-        viewHolder.txtDateInputHolder.setText("Day: " + date[position]);
-        viewHolder.txtCalendarEffortHolder.setText("Calendar Effort: " + Float.valueOf(calendarEffort[position]).toString());
-        viewHolder.txtActuralEffortHolder.setText("Actural Effort: " + Float.valueOf(acturalEffort[position]).toString());
-        viewHolder.txtBuiableEffortHolder.setText("Buiable Effort: " + Float.valueOf(buiableEffort[position]).toString());
-
+        EffortResponse effort = listEffort.get(position);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        viewHolder.txtDateInputHolder.setText("Date: " + sdf.format(effort.getReportDate()));
+        viewHolder.txtCalendarEffortHolder.setText("Calendar Effort: "  + effort.getCalendarEffort());
+        viewHolder.txtActuralEffortHolder.setText("Actural Effort: "    + effort.getActualEffort());
+        viewHolder.txtBuiableEffortHolder.setText("Buiable Effort: "    + effort.getBuildableEffort());
+        String status = "";
+        switch(effort.getStatus()) {
+            case -1:
+                status = "Rejected";
+                break;
+            case 0:
+                status = "Pending";
+                break;
+            case 1:
+                status = "Approved";
+                break;
+        }
+        viewHolder.txtStatus.setText(status);
         return convertView;
 
     }
@@ -54,13 +64,14 @@ public class CustomListEffortStatus extends ArrayAdapter<String> {
         TextView txtCalendarEffortHolder;
         TextView txtActuralEffortHolder;
         TextView txtBuiableEffortHolder;
+        TextView txtStatus;
 
         ViewHolder(View v) {
-            txtDateInputHolder = v.findViewById(R.id.txtDateInput);
+            txtDateInputHolder      = v.findViewById(R.id.txtDateInput);
             txtCalendarEffortHolder = v.findViewById(R.id.txtCalendarEffort);
-            txtActuralEffortHolder = v.findViewById(R.id.txtActuralEffort);
-            txtBuiableEffortHolder = v.findViewById(R.id.txtBuiableEffort);
-
+            txtActuralEffortHolder  = v.findViewById(R.id.txtActuralEffort);
+            txtBuiableEffortHolder  = v.findViewById(R.id.txtBuiableEffort);
+            txtStatus               = v.findViewById(R.id.txtStatus);
         }
     }
 }
