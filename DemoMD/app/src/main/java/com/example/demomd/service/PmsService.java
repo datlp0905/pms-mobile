@@ -1,4 +1,4 @@
-package com.example.demomd.repository;
+package com.example.demomd.service;
 
 import com.example.demomd.data.EffortRequest;
 import com.example.demomd.data.EffortResponse;
@@ -15,7 +15,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
-public interface PMSRepository {
+public interface PmsService {
 
     @GET("project-members/projects")
     Call<List<ProjectResponse>> getAllProjectByEmployeeId(@Query("employeeID") String employeeId);

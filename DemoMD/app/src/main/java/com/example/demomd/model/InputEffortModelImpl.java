@@ -3,7 +3,7 @@ package com.example.demomd.model;
 import com.example.demomd.data.EffortRequest;
 import com.example.demomd.data.PositionResponse;
 import com.example.demomd.remote.APIUtils;
-import com.example.demomd.repository.PMSRepository;
+import com.example.demomd.service.PmsService;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InputEffortModelImpl implements InputEffortModel {
-    private PMSRepository pmsRepository;
+    private PmsService pmsService;
 
     @Override
     public void getListPosition(final OnFinishListener finishListener, int projectMemberId) {
-        pmsRepository = APIUtils.getPMSService();
-        Call<List<PositionResponse>> call = pmsRepository.getAllPositionOfEmployee(projectMemberId);
+        pmsService = APIUtils.getPMSService();
+        Call<List<PositionResponse>> call = pmsService.getAllPositionOfEmployee(projectMemberId);
         call.enqueue(new Callback<List<PositionResponse>>() {
             @Override
             public void onResponse(Call<List<PositionResponse>> call, Response<List<PositionResponse>> response) {
@@ -33,8 +33,8 @@ public class InputEffortModelImpl implements InputEffortModel {
 
     @Override
     public void inputEffort(final OnFinishListener finishListener, final EffortRequest effortRequest) {
-        pmsRepository = APIUtils.getPMSService();
-        Call<EffortRequest> call = pmsRepository.inputEffort(effortRequest);
+        pmsService = APIUtils.getPMSService();
+        Call<EffortRequest> call = pmsService.inputEffort(effortRequest);
         call.enqueue(new Callback<EffortRequest>() {
             @Override
             public void onResponse(Call<EffortRequest> call, Response<EffortRequest> response) {

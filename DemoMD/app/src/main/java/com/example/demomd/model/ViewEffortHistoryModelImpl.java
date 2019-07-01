@@ -2,7 +2,7 @@ package com.example.demomd.model;
 
 import com.example.demomd.data.EffortResponse;
 import com.example.demomd.remote.APIUtils;
-import com.example.demomd.repository.PMSRepository;
+import com.example.demomd.service.PmsService;
 
 import java.util.List;
 
@@ -12,12 +12,12 @@ import retrofit2.Response;
 
 public class ViewEffortHistoryModelImpl implements ViewEffortHistoryModel {
 
-    private PMSRepository pmsRepository;
+    private PmsService pmsService;
 
     @Override
     public void getAllEffortOfCurrentWeek(final OnFinishListener finishListener, int projectMemberId) {
-        pmsRepository = APIUtils.getPMSService();
-        Call<List<EffortResponse>> call = pmsRepository.getAllEffortOfCurrentWeek(projectMemberId);
+        pmsService = APIUtils.getPMSService();
+        Call<List<EffortResponse>> call = pmsService.getAllEffortOfCurrentWeek(projectMemberId);
         call.enqueue(new Callback<List<EffortResponse>>() {
             @Override
             public void onResponse(Call<List<EffortResponse>> call, Response<List<EffortResponse>> response) {
